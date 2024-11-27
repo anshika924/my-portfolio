@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<ht lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Expense Tracker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Your existing styles */
+        .logo {
+            max-width: 50px; /* Adjust the max-width for the logo */
+            margin-bottom: 10px;
+            display: block; /* Ensures the margin is applied properly */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #customerReviews {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .customer-review {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .customer-review p {
+            color: #6c757d;
+        }
+    
+        #homeContent {
+            margin-top: 20px;
+        } 
+        #currencyConverter {
+            margin-top: 60px;
+            background-color: #ffffff;
+            padding: 80px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #TravelLogs {
+            margin-top:60px;
+            background-color: rgb(255, 255, 255);
+            padding:30px;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgb(52, 31, 2);
+        }
+        #convertedAmount {
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+            margin-top: 20px;
+        } 
+        #logList {
+            list-style: none;
+            padding: 0;
+        }
+
+        .logItem h3 {
+            margin-bottom: 5px;
+        }
+
+        .logItem p {
+            margin: 0;
+        }
+        #customerReviews {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .customer-review {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .customer-review h3 {
+            color: #495057;
+        }
+
+        .customer-review p {
+            color: #6c757d;
+        }
+        /* Styles for Receipt Attachment */
+        #receiptAttachment {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #uploadedReceipt {
+            max-width: 300px;
+            margin: 20px auto;
+            display: block;
+        }
+        
+        button {
+    background-color: #e0620d;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+        /* Your existing styles */
+
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #analyticsSection {
+            margin-top: 40px;
+        }
+    
+    
+        
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: rgb(255, 255, 255);
+                
+                margin: 0;
+                padding: 0;
+            }
+    
+            nav {
+                background-color: rgb(31, 148, 7);
+                padding: 10px;
+                color: #fff;
+            }
+    
+            nav a {
+                color: #fff;
+                margin: 0 15px;
+                text-decoration: none;
+            }
+    
+            nav a:hover {
+                text-decoration: underline;
+                color: #0f15b3;
+            }
+    
+            #content {
+                padding: 50px;
+            }
+    
+            #expense-form {
+                background-color: #ffffff;
+                padding: 30px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+    
+            h1, h2 {
+                color: #495057;
+                text-align: center;
+            }
+    
+            label {
+                display: block;
+                margin-bottom: 8px;
+            }
+    
+            input, select, button {
+                margin-bottom: 15px;
+                width: 100%;
+            }
+    
+            button {
+                background-color: #03ae00;
+                color: light #44b100;
+                border-radius: 12px;
+                
+        }
+    
+            button:hover {
+                background-color: rgb(20, 17, 221, 63, 168);
+            }
+    
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+    
+            li {
+                background-color: #f9f9f9;
+                padding: 15px;
+                margin-bottom: 12px;
+                border-radius: 4px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .info-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .dropdown {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        #contactInfo {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+        footer {
+    background-color: rgb(9, 169, 9);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#home {
+    padding: 40px 0;
+}
+
+h1 {
+    color: #215791;
+}
+
+.search-bar {
+    margin-top: 20px;
+}
+
+input {
+    padding: 10px;
+    width: 70%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 8px;
+    font-size: 14px;
+    width: 100px; /* Adjusted width */
+    background-color: #0ead0b;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #08d816;
+}
+/* CSS */
+
+#app {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h3 {
+  text-align: center;
+}
+
+input, button {
+  padding: 10px;
+  border: 1px solid #ddd;
+  width: 100%;  
+  margin-bottom: 10px;
+}
+
+#expenses {
+  list-style: none;
+  padding-left: 0;
+}
+
+#total {
+  font-weight: bold;
+  color: green;
+}
+</style>
+       
+
+        </style>
+    </head>
+    <body>
+        <nav>
+            <a href="#">Home</a>
+            <a href="FeaturedDestinations.html">featured destinations</a>
+            <a href="TravelGuide.html"> travel guide</a>
+            <a href="UserReview.html"> user review</a> 
+            <a href="Offers&Discounts.html"> Offers&Discounts</a>    
+                                                                                                      
+           
+        </nav>
+        <section id="home">
+            <div class="container">
+                <h1>Welcome to Travel Expense Tracker</h1>
+                    <div class="search-bar">
+                            <input type="text" id="searchInput" placeholder="Search..." oninput="performSearch()">
+                            <button onclick="performSearch()">Search</button>
+                        </div>
+                        <div id="searchResults"></div>
+                    </div>
+                    </div>
+                </div>
+            </section>
+        
+    
+        <div id="content">
+            <div class="container">
+                <div class="col-lg-6 mx-auto" id="expense-form">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/014/039/500/small/airplane-travel-logo-free-vector.jpg" alt="Logo" ,class="logo"> 
+                                                                          
+                    <h1 class="mb-4">Travel Expense Tracker</h1>
+    
+                    <label for="expenseCategory">Expense Category:</label>
+                    <select class="form-control" id="expenseCategory">
+                        <option value="food">Food</option>
+                        <option value="accommodation">Accommodation</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="Transportation">tranportation</option>
+                        <option value="other">Other</option>
+                    </select>
+    
+                    <label for="expenseAmount">Expense Amount:</label>
+                    <input type="number" class="form-control" id="expenseAmount" placeholder="Enter amount">
+    
+                    <button class="btn btn-success btn-block" onclick="addExpense()">Add Expense</button>
+    
+                    <h2 class="mb-3" id="expenses">Expense List</h2>
+                    <ul id="expenseList"></ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div id="expense-form">
+            <h3>Add Expense</h3>
+            
+            <label for="expense-name">Name:</label>
+            <input type="text" id="expense-name">
+          
+            <label for="expense-amount">Amount:</label>  
+            <input type="number" id="expense-amount">
+          
+            <label for="expense-date">Date:</label>
+            <input type="date" id="expense-date">
+          
+            <button id="add-expense">Add Expense</button>
+          </div>
+          
+          <ul id="expenses"></ul> -->
+          <!-- HTML -->
+<div id="app">
+    <h1>Expense Total</h1>
+  
+    <input id="expense-name" placeholder="Expense name">
+    <input id="expense-amount" placeholder="Expense amount">
+    
+    <button id="add-expense">Add Expense</button>
+    
+    <h3>Expenses</h3>
+    <ul id="expenses"></ul>
+  
+    <h3>Total: <span id="total">0</span></h3>
+  
+  </div>
+
+    <br>
+    <br>                                                              
+
+    <div id="receiptAttachment">
+        <label for="receiptInput"><h1>Attach Expense Reciept</h1></label>
+        <input type="file" id="receiptInput" accept="image/*">
+        <img id="uploadedReceipt" src="#" alt="Uploaded Receipt" style="display: none;">
+    </div> 
+
+              
+            <div id="travelLogs">
+                <h2 class="mb-3">Travel Logs</h2>
+                <label for="destination">Destination:</label>
+                <input type="text" class="form-control" id="destination" placeholder="Enter destination">
+        
+                <label for="travelDate">Travel Date:</label>
+                <input type="date" class="form-control" id="travelDate">
+        
+                <label for="logDescription">Log Description:</label>
+                <textarea class="form-control" id="logDescription" rows="3" placeholder="Enter a brief description"></textarea>
+        
+                <button class="btn1" onclick="addTravelLog()">Add Travel Log</button>
+        
+                <div id="logList"></div>
+            </div>
+        
+            </div>
+            <br>
+            <br>
+            
+
+    <div id="currencyConverter">
+        <h1 class="mb-3">Currency Converter</h1>
+        <label for="selectedCurrency">Select Currency:</label>
+        <select class="form-control" id="selectedCurrency">
+            <option value="usd">USD</option>
+            <option value="eur">EUR</option>
+            <option value="gbp">GBP</option>
+            <option value="inr">INR</option>
+            <!-- Add more currencies as needed -->
+        </select>
+
+        <label for="expenseAmountCurrency">Expense Amount in Selected Currency:</label>
+        <input type="number" class="form-control" id="expenseAmountCurrency" placeholder="Enter amount">
+
+        <button class="btn2" onclick="convertCurrency()">Convert Currency</button>
+
+        <div id="convertedAmount">Equivalent Amount in USD: $<span id="equivalentAmount">0.00</span></div>
+    </div>
+      
+
+            <!-- Add more feedback cards as needed -->
+
+        </div>
+    </section>
+    <section id="about">
+        <img src="">
+        <h2>About Us</h2>
+        <p><i>Welcome to Travel Expense Tracker, your trusted companion on the journey to financial freedom and unforgettable adventures. At Travel Expense Tracker, we understand that every travel experience is a unique story, and we're here to help you write yours.
+
+            Our mission is simple: empower travelers like you to explore the world without worrying about budget constraints. We believe that every traveler deserves to make the most of their adventures, from discovering hidden gems to savoring local cuisines.
+            
+            With our user-friendly expense tracking tools, we aim to simplify the way you manage your travel budget. Whether you're a backpacker, a luxury traveler, or someone in between, our platform is designed to adapt to your unique travel style.
+            
+            Join us on this exciting journey where every expense becomes a piece of your travel narrative. Let Travel Expense Tracker be your financial compass, guiding you toward a seamless and enjoyable travel experience.
+            
+            Happy travels and happy tracking!
+            
+            The Travel Expense Tracker Team</i></p>
+
+        </div>
+    </section>
+    <h1>Contact Us</h1>
+    </header>
+    <section id="contactInfo">
+        <p>If you have any questions or feedback, feel free to reach out:</p>
+        <p>Email: <a href="mailto:your@gmail.com">TravelExpenseTracker@gmail.com</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Travel Expense Tracker</p>
+    </footer>
+    
+
+    <script>
+
+        const itemsToSearch = [
+            "Expense 1",
+            "Expense 2",
+            "Transportation",
+            "Accommodation",
+            "Food",
+            "Entertainment",
+            "Other"
+        ];
+
+        function performSearch() {
+            var searchTerm = document.getElementById("searchInput").value.toLowerCase();
+            var resultsContainer = document.getElementById("searchResults");
+
+            // Clear previous results
+            resultsContainer.innerHTML = '';
+
+            // Filter items based on the search term
+            var filteredItems = itemsToSearch.filter(item => item.toLowerCase().includes(searchTerm));
+
+            // Display the filtered results
+            filteredItems.forEach(result => {
+                var resultItem = document.createElement('div');
+                resultItem.textContent = result;
+                resultsContainer.appendChild(resultItem);
+            });
+        }
+        /* JavaScript */
+
+let expenses = []
+let total = 0;
+
+document.getElementById('add-expense')
+  .addEventListener('click', () => {
+    
+    const name = document.getElementById('expense-name').value;  
+    const amount = parseInt(document.getElementById('expense-amount').value);
+    
+    expenses.push({
+      name, 
+      amount
+    });
+    
+    showExpenses();
+    calculateTotal();
+
+});
+
+function calculateTotal() {
+  total = 0;
+  expenses.forEach(exp => {
+    total += exp.amount  
+  });
+
+  document.getElementById('total').innerText = total;
+}
+
+function showExpenses() {
+  
+  // show list of expenses
+
+}
+
+        function addExpense() {
+                var category = document.getElementById("expenseCategory").value;
+                var amount = document.getElementById("expenseAmount").value;
+    
+                if (category && amount) {
+                    var expenseList = document.getElementById("expenseList");
+                    var listItem = document.createElement("li");
+                    listItem.className = "bg-light p-3 mb-3 rounded";
+                    listItem.textContent = category + ": $" + amount;
+                    expenseList.appendChild(listItem);
+    
+                    // Clear input fields after adding expense
+                    document.getElementById("expenseCategory").value = "";
+                    document.getElementById("expenseAmount").value = "";
+                } else {
+                    alert("Please enter both expense category and amount.");
+                }
+            }
+            // document.getElementById("totalExpense").textContent = "Total Expense: $" + totalExpense.toFixed(2);
+        
+           
+            
+
+            // function calculateTotalExpense() {
+            // var expenseList = document.getElementById("expenseList").getElementsByTagName("li");
+            // var totalExpense = 0;
+            // }
+           
+
+            // for (var i = 0; i < expenseList.length; i++) {
+            //     var expenseText = expenseList[i].textContent;
+            //     var expenseAmount = parseFloat(expenseText.split(": $")[1]);
+            //     totalExpense += expenseAmount;
+            // }
+            
+
+        
+        function convertCurrency() {
+            var selectedCurrency = document.getElementById("selectedCurrency").value;
+            var expenseAmountCurrency = parseFloat(document.getElementById("expenseAmountCurrency").value);
+
+            if (selectedCurrency && expenseAmountCurrency && !isNaN(expenseAmountCurrency)) {
+                // Simple conversion rates for demo purposes
+                var conversionRates = {
+                    usd: 1,  // USD is the default currency
+                    eur: 0.85,
+                    gbp: 0.73,
+                    inr: 74.21 // 1USD=74.21(sample conversion rate)
+                    // Add more currencies with their conversion rates
+                };
+
+                var equivalentAmount = expenseAmountCurrency / conversionRates[selectedCurrency];
+
+                document.getElementById("equivalentAmount").textContent = equivalentAmount.toFixed(2);
+            } else {
+                alert("Please enter a valid amount in the selected currency.");
+            }
+        }
+
+        
+        
+        
+
+        function addTravelLog() {
+            var destination = document.getElementById("destination").value;
+            var travelDate = document.getElementById("travelDate").value;
+            var logDescription = document.getElementById("logDescription").value;
+
+            if (destination && travelDate && logDescription) {
+                var logList = document.getElementById("logList");
+                var logItem = document.createElement("div");
+                logItem.className = "logItem";
+                logItem.innerHTML = "<strong>" + destination + "</strong><br>" + "Date: " + travelDate + "<br>Description: " + logDescription;
+                logList.appendChild(logItem);
+
+                // Clear input fields after adding log
+                document.getElementById("destination").value = "";
+                document.getElementById("travelDate").value = "";
+                document.getElementById("logDescription").value = "";
+            } else {
+                alert("Please enter all travel log details.");
+            }
+        }
+        
+        
+
+    // // Sample monthly expenses data
+    // var monthlyExpenses = [
+    //     { month: "January", amount: 500 },
+    //     { month: "February", amount: 600 },
+    //     { month: "March", amount: 700 },
+    //     // ... Add data for other months
+    // ];
+
+    // // Sample yearly summary data
+    // var yearlySummary = {
+    //     totalExpenses: 7800,
+    //     averageMonthlyExpense: 650,
+    //     // Add other summary data as needed
+    // };
+
+    // // Sample custom reports data
+    // var customReports = [
+    //     { title: "Business Trip", expenses: 1200, description: "Expenses related to a business trip." },
+    //     { title: "Vacation", expenses: 2500, description: "Expenses during a relaxing vacation." },
+    //     // Add more custom reports as needed
+    // ];
+
+    // // Function to display monthly expenses
+    // function displayMonthlyExpenses() {
+    //     var monthlyExpensesList = document.getElementById("monthlyExpensesList");
+    //     monthlyExpensesList.innerHTML = "";
+
+    //     monthlyExpenses.forEach(function (expense) {
+    //         var listItem = document.createElement("li");
+    //         listItem.textContent = `${expense.month}: $${expense.amount}`;
+    //         monthlyExpensesList.appendChild(listItem);
+    //     });
+    
+
+    // // Function to display yearly summary
+    // function displayYearlySummary() {
+    //     document.getElementById("totalExpensesYearly").textContent = `Total Expenses: $${yearlySummary.totalExpenses}`;
+    //     document.getElementById("averageMonthlyExpense").textContent = `Average Monthly Expense: $${yearlySummary.averageMonthlyExpense}`;
+    //     // Update other summary elements as needed
+    // }
+
+    // // Function to display custom reports
+    // function displayCustomReports() {
+    //     var customReportsList = document.getElementById("customReportsList");
+    //     customReportsList.innerHTML = "";
+
+    //     customReports.forEach(function (report) {
+    //         var listItem = document.createElement("li");
+    //         listItem.innerHTML = `<strong>${report.title}</strong><br>Expenses: $${report.expenses}<br>Description: ${report.description}`;
+    //         customReportsList.appendChild(listItem);
+    //     });
+    // }
+
+    
+            
+            
+
+</script>
+
+</script>
+    </script>
+</body>
+</html>
